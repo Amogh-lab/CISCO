@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>RV-WoT</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        nav {
+            background-color: rgb(23, 23, 23);
+            padding: 20px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000; 
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 100;
+        }
+        nav .subti {
+            font-size: 30px;
+            color: rgb(243, 252, 255);
+            margin: 0;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        nav .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+        nav .nav-links li {
+            background-color: rgb(8, 79, 107);
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 10px;
+            width: 8%;
+        }
+        nav a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        nav a:hover {
+            color: rgb(0, 59, 77);
+        }
+        .subnav {
+            display: inline-block;
+            background-color: rgb(177, 177, 177);
+            padding: 10px 20px;
+            width: 100%;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .subnav .subtit {
+            font-size: 20px;
+            color: rgb(41, 41, 42);
+            margin: 0;
+        }
+
+      
+        body {
+            margin-top: 68px; /* Avoid content being hidden behind fixed navbar */
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+        }
+
+        button {
+            background-color: rgb(16, 90, 119);
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 7px 0;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        button:hover {
+            background-color: rgb(0, 59, 77);
+        }
+
+    
+    </style>
+</head>
+<body>
+   <nav>
+        <span class="subti">WOT-Enabled Dashboard</span><br>
+    </nav>
+    <div class="subnav" id>
+        <span class="subtit">HELLO, this is WOT page for Pi and ESP</span>
+    </div>
+<div>
+    <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 20px;">
+        What is WoT?
+    </h1>
+    <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px;">The Web of Things (WoT) extends IoT functionality by enabling devices to interact using web standards.<br> Here, the Raspberry Pi and ESP32 collaborate through HTTP protocols to provide a user-friendly interface for controlling <br> hardware and displaying information.</span>
+</div>
+    <div>
+        <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 20px;">Raspberry Pi Web Server</h1>
+        <button onclick="window.location.href='/capture'">Capture Image</button><br>
+        <button onclick="window.location.href='/message'">Display Message</button><br>
+        <button onclick="window.location.href='/switch'">Switch</button>
+    </div>
+</body>
+</html>

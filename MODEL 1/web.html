@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream</title>
+</head>
+<body>
+    <h1>Raspberry Pi Live Stream</h1>
+    <img id="video-stream" src="" alt="Live Stream">
+    <script>
+        const ws = new WebSocket('ws://localhost:3000');
+        const img = document.getElementById('video-stream');
+
+        ws.onmessage = (event) => {
+            const blob = new Blob([event.data], { type: 'image/jpeg' });
+            img.src = URL.createObjectURL(blob);
+        };
+    </script>
+</body>
+</html>
