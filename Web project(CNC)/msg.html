@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Display Message</title>
+  <style>
+  nav {
+    background-color: rgb(23, 23, 23);
+    padding: 20px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; 
+    font-size: 10px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+}
+nav .subti {
+    font-size: 30px;
+    color: rgb(243, 252, 255);
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+nav .nav-links {
+    list-style: none;
+    padding: 0;
+}
+nav .nav-links li {
+    background-color: rgb(8, 79, 107);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 10px;
+    width: 8%;
+}
+nav a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+nav a:hover {
+    color: rgb(0, 59, 77);
+}
+.subnav {
+    display: inline-block;
+    background-color: rgb(177, 177, 177);
+    padding: 10px 20px;
+    width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.subnav .subtit {
+    font-size: 20px;
+    color: rgb(41, 41, 42);
+    margin: 0;
+}
+
+body {
+    margin-top: 68px; 
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; 
+    text-align: center;
+    align-items: center;
+}
+
+button {
+    background-color: rgb(8, 79, 107);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+button:hover {
+    background-color: rgb(0, 59, 77);
+}
+</style>
+</head>
+<body>
+  <nav>
+      <span class="subti">WOT-Enabled Dashboard</span><br>
+  </nav>
+  <div class="subnav">
+      <span class="subtit">HELLO, this is WOT page for Pi and ESP</span>
+  </div>
+  <br>
+  <div>
+      <a style="font-size: 30px;">Send Message to ESP32</a>
+      <form id="messageForm">
+          <label for="message" style="font-size: 25px;">Enter Message:</label>
+          <input type="text" id="message" name="message" required style="height: 30px; width: 25%; border: #9c3beb; background-color: #9c9c9c94;">
+          <button type="submit">Send</button>
+      </form>
+      <p id="status"></p>
+      <button onclick="window.location.href='/'">Go Back</button>
+
+      <script>
+          document.getElementById('messageForm').addEventListener('submit', function (e) {
+              e.preventDefault(); // Prevent form submission from reloading the page
+              const message = document.getElementById('message').value;
+
+              fetch('/send-message', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ message })
+              })
+              .then(response => response.text())
+              .then(data => {
+                  document.getElementById('status').innerText = data; // Display the response
+              })
+              .catch(error => {
+                  document.getElementById('status').innerText = 'Error sending message';
+                  console.error('Error:', error); // Log errors
+              });
+          });
+      </script>
+  </div>
+</body>
+</html>
