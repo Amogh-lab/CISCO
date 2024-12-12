@@ -109,6 +109,8 @@ void setup(){
     delay(1000);
     Serial.println("Connecting to WiFi..");
   }
+  Serial.println("IP adress : ");
+  Serial.print(WiFi.localIP);
 
   // Print ESP Local IP Address
   Serial.println(WiFi.localIP());
